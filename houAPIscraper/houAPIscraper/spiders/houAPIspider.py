@@ -1,19 +1,18 @@
 import scrapy
-import scrapy
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
 
-
-class HouAPIspider(scrapy.Spider):
+class HouAPIspider(CrawlSpider):
     name = "houAPI"
+    allowed_domains = ["sidefx.com"]
     start_urls = ["https://www.sidefx.com/docs/houdini/hom/hou/"]
 
-    def parse(self, response):
-        for cats in response.css('div.content'):
-            name = cats.css('a.label-text.homclass::text').get()
-            summary = cats.css('p.summary::text').get(default='none')
-            link = cats.css('a.label-text.homclass::attr(href)').get(default='none')
+    rules = (
+        Rule(LinkExtractor(allow=(r'/docs/houdini/hom/hou/')), callback='parse_item', follow=True),
 
-            yield {
-                "name": name,
-                "summary": summary,
-                "link": link,
-            }
+    )
+
+    def parse_item(self, response):
+        pass
+    
+            
