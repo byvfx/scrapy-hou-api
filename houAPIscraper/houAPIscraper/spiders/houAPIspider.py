@@ -15,10 +15,7 @@ class HouAPIspider(CrawlSpider):
     def parse_item(self, response):
         
         yield {
-            #'category': response.css('h2.label.heading.pull.left::attr(data-title)').get(),
-             'homclass': response.css('a.label-text.homclass::text').get(),
+            'category': response.css('h2.label.heading.pull.left::attr(data-title)').get(),
+            #'homclass': response.css('a.label-text.homclass::text').get(),
             # 'summary': response.css('p.summary::text').getall(),
         }
-
-    
-            
