@@ -37,8 +37,6 @@ class HouAPIspider(CrawlSpider):
             for item in items:
                 item_title = item.xpath('./p[@class="label"]/a/text()').get()
                 item_summary = item.xpath('./p[@class="summary"]/text()').get()
-                print(f"Item Title: {item_title}")  # Print the item title
-                print(f"Item Summary: {item_summary}")  # Print the item summary
 
                 item_data = {
                     'title': item_title,
@@ -51,7 +49,7 @@ class HouAPIspider(CrawlSpider):
 
                 for function_name in function_names:
                     # Placeholder for function description and code
-                    function_description = response.xpath('//*[@id="brief"]/div/p/text()').get()  # fix this.
+                    function_description = ' '.join(response.xpath('//*[@id="brief"]/div/p/text()').extract())
                     code_text = ''  # Adjust this to extract the correct code
 
                     function_data = {
