@@ -10,8 +10,8 @@ class HouAPIspider(CrawlSpider):
     start_urls = ["https://www.sidefx.com/docs/houdini/hom/hou/index.html"]
 
     rules = (
-        Rule(LinkExtractor(allow=(r'/docs/houdini/hom/hou/')), callback='parse_start_url'),
-        Rule(LinkExtractor(allow=(r'/docs/houdini/hom/hou/')), callback='parse_detail_page', follow=True),
+        Rule(LinkExtractor(allow=(r'/docs/houdini/hom/hou/')), callback='parse_start_url',follow=True),
+        Rule(LinkExtractor(allow=(r'/docs/houdini/hom/hou/')), callback='parse_detail_page'),
     )
 
     def parse_start_url(self, response):
