@@ -1,3 +1,7 @@
+# site
+https://www.sidefx.com/docs/houdini/hom/hou/index.html
+https://www.sidefx.com/docs/houdini/hom/hou/BaseKeyframe.html
+
 # category name
 texts = response.css('h2.label.heading.pull.left::text').getall()
 clean_texts = [text.strip() for text in texts if text.strip()]
